@@ -1,84 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jimmy's Diner - Order Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="index.css">
-</head>
-<body>
-    <header class="header">
-        <h1 class="header__heading">Jimmy's Diner</h1>
-        <h2 class="header__subheading">The best burgers and pizzas in town.</h2>
-    </header>
-    <main>
-        <section class="menu-container">
-            <article class="menu-item">
-                <div class="menu-item__content-wrapper">
-                    <span class="menu-item__graphic" role="img" aria-label="pizza emoji">🍕</span>
-                    <div class="menu-item__details-wrapper">
-                        <h3 class="menu-item__name">Pizza</h3>
-                        <p class="menu_item__ingredients">pepperoni, mushroom, mozzarella</p>
-                        <p class="menu_item__price">$14</p>
-                    </div>
-                </div>
-                <button class="menu-item__button--add" data-id="0">
-                    <i class="fa-solid fa-plus"></i>
-                </button>
-            </article>
-        </section>
-        <section class="order-container">
-            <header class="order__header">
-                <h2 class="order__heading">Your order</h2>
-            </header>
-            <div class="order__details-wrapper">
-                <ul class="order__list">
-                    <li class="order__list-item">
-                        <div class="order__item-wrapper">
-                            <h3 class="order__item-name">Pizza</h3>
-                            <button class="order__button--remove">remove</button>
-                        </div>
-                        <p class="order__item-price">$14</p>
-                    </li>
-                </ul>
-                <aside class="promocode-wrapper">
-                    <h2 class="promocode__heading">Promo Code</h2>
-                    <ul class="promocode__list">
-                        <li class="promocode__list-item">HAPPYHOUR</li>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jimmy's Diner - Order Page</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="header__heading">Jimmy's Diner</h1>
+            <h2 class="header__subheading">The best burgers and pizzas in town.</h2>
+        </header>
+        <main>
+            <section class="menu-container" id="menu-container">
+                <!-- menu items rendered dynamically -->
+            </section>
+            <section class="order-container">
+                <header class="order__header">
+                    <h2 class="order__heading">Your order</h2>
+                </header>
+                <div class="order__details-wrapper">
+                    <ul class="order__list" id="order__list">
+                        <li class="order__list-item">
+                            <div class="order__item-wrapper">
+                                <h3 class="order__item-name">Pizza</h3>
+                                <button class="order__button--remove">remove</button>
+                            </div>
+                            <p class="order__item-price">$14</p>
+                        </li>
                     </ul>
-                    <div class="promocode-input-wrapper">
-                        <input type="text" class="promocode__input" placeholder="Promo Code">
-                        <button type="button" class="promocode__button--apply">Apply</button>
-                    </div>
-                </aside>
-                <footer class="order__footer">
-                    <h2 class="order__total-heading">Total price:</h2>
-                    <p class="order__total-price">$26</p>
-                </footer>
-                <button class="order__button--complete">Complete order</button>
-            </div>
-        </section>
-        <div class="modal" id="modal">
-            <div class="modal__button-wrapper">
-                <button class="modal__button--close" id="modal__button--close">
-                    <i class="fa-regular fa-circle-xmark"></i>
-                </button>
-            </div>
-            <div class="modal__inner-wrapper" id="modal__inner-wrapper">
-                <h2 class="modal__heading">Enter card details</h2>
-                <form class="modal__payment-form" id="modal__payment-form">
-                    <input type="text" class="modal__payment-form--input" name="fullName" placeholder="Enter your name" required>
-                    <input type="text" class="modal__payment-form--input" name="creditCardNumber" placeholder="Enter card number" required>
-                    <input type="text" class="modal__payment-form--input" name="CVVNumber" placeholder="Enter CVV" required>
-                    <div class="modal__button-inner-wrapper">
-                        <button type="submit" class="modal__button--pay">Pay</button>
-                    </div>
-                </form>
+                    <aside class="promocode-wrapper">
+                        <h2 class="promocode__heading">Promo Code</h2>
+                        <ul class="promocode__list">
+                            <li class="promocode__list-item">HAPPYHOUR</li>
+                        </ul>
+                        <div class="promocode-input-wrapper">
+                            <input type="text" class="promocode__input" placeholder="Promo Code">
+                            <button type="button" class="promocode__button--apply">Apply</button>
+                        </div>
+                    </aside>
+                    <footer class="order__footer">
+                        <h2 class="order__total-heading">Total price:</h2>
+                        <p class="order__total-price">$26</p>
+                    </footer>
+                    <button class="order__button--complete">Complete order</button>
+                </div>
+            </section>
+            <div class="modal" id="modal">
+                <div class="modal__button-wrapper">
+                    <button class="modal__button--close" id="modal__button--close">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal__inner-wrapper" id="modal__inner-wrapper">
+                    <h2 class="modal__heading">Enter card details</h2>
+                    <form class="modal__payment-form" id="modal__payment-form">
+                        <input type="text" class="modal__payment-form--input" name="fullName" placeholder="Enter your name" required>
+                        <input type="text" class="modal__payment-form--input" name="creditCardNumber" placeholder="Enter card number" required>
+                        <input type="text" class="modal__payment-form--input" name="CVVNumber" placeholder="Enter CVV" required>
+                        <div class="modal__button-inner-wrapper">
+                            <button type="submit" class="modal__button--pay">Pay</button>
+                        </div>
+                    </form>
 
+                </div>
             </div>
-        </div>
-    </main>
-    <script src="js/index.js" type="module"></script>
-</body>
+        </main>
+        <script src="./js/index.js" type="module"></script>
+    </body>
 </html>

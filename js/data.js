@@ -1,23 +1,25 @@
 const menuArray = [
     {
         id: 0,
-        name: "Pizza",
+        name: "pizza",
         ingredients: ["pepperoni", "mushroom", "mozzarella"],
         price: 14,
         emoji: "🍕"
     },
     {
         id: 1,
-        name: "Hamburger",
+        name: "hamburger",
         ingredients: ["beef", "cheese", "lettuce"],
         price: 12,
         emoji: "🍔",
     },
         {
         id: 2,
-        name: "Beer",
+        name: "beer",
         ingredients: ["grain, hops, yeast, water"],
         price: 12,
         emoji: "🍺",
     }
 ];
+
+export default menuArray;
