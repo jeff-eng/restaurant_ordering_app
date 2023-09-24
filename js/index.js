@@ -17,7 +17,7 @@ document.getElementById('menu-container').addEventListener('click', (event) => {
     if (itemName) {
         console.log(itemName);
         const updatedQuantity = changeMenuItemQuantity(
-                                    clickedTarget.textContent, 
+                                    true, 
                                     menuObjects2[itemName]
                                 );
         console.log(updatedQuantity);
@@ -37,5 +37,13 @@ document.getElementById('menu-container').addEventListener('click', (event) => {
 });
 
 document.getElementById('order__list').addEventListener('click', (event) => {
-    console.log('remove button clicked');
+    const decrementedItem = event.target.dataset.less;
+    const incrementedItem = event.target.dataset.more;
+
+    decrementedItem ? changeMenuItemQuantity(false, menuObjects2[decrementedItem]) :
+        changeMenuItemQuantity(true, menuObjects2[incrementedItem]);
+
+    // Re-render the order list
+    document.getElementById('order__list').innerHTML = '';
+    document.getElementById('order__list').append(...renderOrder(menuObjects2, customerOrder));
 });
