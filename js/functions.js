@@ -16,7 +16,7 @@ function renderMenu(menuArr) {
 function renderMenu2(menuObjects) {
     // Create array from menuObjects, sort array by id, and create HTML for each item
     return Object.entries(menuObjects)
-    .sort(([_ignoreA, objA], [_ignoreB, objB]) => objA.id - objB.id)
+    .sort(([_ignoreA, objA], [_ignoreB, objB]) => objA.data.id - objB.data.id)
     .map(([key, value]) => createMenuItem2(key, value));
 }
 
@@ -40,7 +40,8 @@ function createMenuItem(menuObject) {
 
 function createMenuItem2(menuItemObjKey, menuItemObjVal) {
     const name = menuItemObjKey;
-    const { id, ingredients, price, emoji } = menuItemObjVal;
+    const { id, ingredients, price, emoji } = menuItemObjVal.data;
+    console.log(id, ingredients, price, emoji);
     const article = createBasicElement(htmlElementTable.article, `menu-item-${id}`, 'menu-item');
 
     article.innerHTML = 
@@ -52,7 +53,7 @@ function createMenuItem2(menuItemObjKey, menuItemObjVal) {
             <p class="menu_item__price">$${price}</p>
         </div>
     </div>
-    <button class="menu-item__button--add" id="${name}" data-item="${name}">+</button>`;
+    <button class="menu-item__button" id="menu-item__button--plus-${name}" data-item="${name}">+</button>`
     
     return article;
 }
@@ -67,23 +68,38 @@ function createBasicElement(tagType, idName='', ...classNames) {
 }
 
 function renderOrder(menuObjects, orderArray) {
-    return orderArray.map((itemName) => createOrderListItemHtml(menuObjects, itemName));
+    return orderArray.map((itemName) => createOrderListItem(menuObjects, itemName));
 }
 
-function createOrderListItem(menuObject, menuItemString) {
-    const { price } = menuObject;
+function createOrderListItem(menuObjects, menuItemString) {
+    const { qty, data } = menuObjects[menuItemString];
     const li = createBasicElement(htmlElementTable.li, `order-list-item-${menuItemString}`, 'order__list-item');
 
     li.innerHTML = `
         <div class="order__item-wrapper">
             <h3 class="order__item-name">${menuItemString}</h3>
-            <button class="order__button--remove" data-order-item="${menuItemString}">remove</button>
+            <button class="order__button--remove" data-remove="${menuItemString}">remove</button>
+            <i class="fa-solid fa-chevron-left" data-less="${menuItemString}"></i>
+            <span>${qty}</span>
+            <i class="fa-solid fa-chevron-right" data-more="${menuItemString}"></i>
         </div>
-        <p class="order__item-price">$${price}</p>`;
-
-    console.log(li);
+        <p class="order__item-price">$${data.price * qty}</p>`;
 
     return li;
 }
 
-export { renderMenu, renderMenu2, createMenuItem, createBasicElement, renderOrder, createOrderListItem };
+function changeMenuItemQuantity(increaseQty, menuObject) {
+    increaseQty ? menuObject.increment() : menuObject.decrement();
+
+    return menuObject.qty;
+}
+
+export { 
+    renderMenu, 
+    renderMenu2, 
+    createMenuItem, 
+    createBasicElement, 
+    renderOrder, 
+    createOrderListItem,
+    changeMenuItemQuantity 
+};
