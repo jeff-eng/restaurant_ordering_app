@@ -9,36 +9,23 @@ const htmlElementTable = {
     li: 'li'
 };
 
-function renderMenu(menuArr) {
-    return menuArr.map((menuObj) => createMenuItem(menuObj));
+function createBasicElement(tagType, idName='', ...classNames) {
+    const htmlElement = document.createElement(tagType);
+
+    htmlElement.id = idName;
+    htmlElement.classList.add(...classNames);
+
+    return htmlElement;
 }
 
-function renderMenu2(menuObjects) {
+function renderMenu(menuObjects) {
     // Create array from menuObjects, sort array by id, and create HTML for each item
     return Object.entries(menuObjects)
     .sort(([_ignoreA, objA], [_ignoreB, objB]) => objA.data.id - objB.data.id)
-    .map(([key, value]) => createMenuItem2(key, value));
+    .map(([key, value]) => createMenuItem(key, value));
 }
 
-function createMenuItem(menuObject) {
-    const { id, name, ingredients, price, emoji } = menuObject;
-    const article = createBasicElement(htmlElementTable.article, `menu-item-${id}`, 'menu-item');
-
-    article.innerHTML = 
-    `<div class="menu-item__content-wrapper">
-        <span class="menu-item__graphic" role="img" aria-label="${name} emoji">${emoji}</span>
-        <div class="menu-item__details-wrapper">
-            <h3 class="menu-item__name">${name}</h3>
-            <p class="menu_item__ingredients">${ingredients.join(', ')}</p>
-            <p class="menu_item__price">$${price}</p>
-        </div>
-    </div>
-    <button class="menu-item__button--add" id="${name}" data-id="${id}">+</button>`;
-    
-    return article;
-}
-
-function createMenuItem2(menuItemObjKey, menuItemObjVal) {
+function createMenuItem(menuItemObjKey, menuItemObjVal) {
     const name = menuItemObjKey;
     const { id, ingredients, price, emoji } = menuItemObjVal.data;
     console.log(id, ingredients, price, emoji);
@@ -53,18 +40,9 @@ function createMenuItem2(menuItemObjKey, menuItemObjVal) {
             <p class="menu_item__price">$${price}</p>
         </div>
     </div>
-    <button class="menu-item__button" id="menu-item__button--plus-${name}" data-item="${name}">+</button>`
+    <button class="menu-item__button" id="menu-item__button--plus-${name}" data-add="${name}">+</button>`
     
     return article;
-}
-
-function createBasicElement(tagType, idName='', ...classNames) {
-    const htmlElement = document.createElement(tagType);
-
-    htmlElement.id = idName;
-    htmlElement.classList.add(...classNames);
-
-    return htmlElement;
 }
 
 function renderOrder(menuObjects, orderArray) {
@@ -88,18 +66,10 @@ function createOrderListItem(menuObjects, menuItemString) {
     return li;
 }
 
-function changeMenuItemQuantity(increaseQty, menuObject) {
-    increaseQty ? menuObject.increment() : menuObject.decrement();
+function changeMenuItemQuantity(isQtyIncrease, menuObject) {
+    isQtyIncrease ? menuObject.increment() : menuObject.decrement();
 
     return menuObject.qty;
 }
 
-export { 
-    renderMenu, 
-    renderMenu2, 
-    createMenuItem, 
-    createBasicElement, 
-    renderOrder, 
-    createOrderListItem,
-    changeMenuItemQuantity 
-};
+export { renderMenu, renderOrder, changeMenuItemQuantity };

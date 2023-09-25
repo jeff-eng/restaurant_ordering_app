@@ -1,49 +1,48 @@
-import { menuArray, menuObjects2 } from './data.js';
-import { createOrderListItem, renderMenu, renderMenu2, renderOrder, changeMenuItemQuantity } from './functions.js';
+import { menuObjects } from './data.js';
+import { renderMenu, renderOrder, changeMenuItemQuantity } from './functions.js';
 
 let customerOrder = [];
 
 // Dynamically generate menu
-// document.getElementById('menu-container').append(...renderMenu(menuArray));
-document.getElementById('menu-container').append(...renderMenu2(menuObjects2));
+document.getElementById('menu-container').append(...renderMenu(menuObjects));
 
 //Event listeners
 document.getElementById('menu-container').addEventListener('click', (event) => {
     const clickedTarget = event.target;
-    const itemName = clickedTarget.dataset.item;
+    const addItem = clickedTarget.dataset.add;
 
-    console.log(clickedTarget);
+    if (addItem) {
+        // Increment item quantity
+        const updatedQuantity = changeMenuItemQuantity(true, menuObjects[addItem]);
+        // Check if item is already in customerOrder array
+        const isItemInOrder = customerOrder.includes(addItem);
+        // If updated quantity is > 0 and item is not already in order array, then add
+        updatedQuantity && !isItemInOrder ? customerOrder.push(addItem) : null;
 
-    if (itemName) {
-        console.log(itemName);
-        const updatedQuantity = changeMenuItemQuantity(
-                                    true, 
-                                    menuObjects2[itemName]
-                                );
-        console.log(updatedQuantity);
-        const isItemInOrder = customerOrder.includes(itemName);
-        
-        updatedQuantity && !isItemInOrder ? customerOrder.push(itemName)
-            : !updatedQuantity && isItemInOrder ? customerOrder.splice(customerOrder.indexOf(itemName))
-            : null;
-        
-        console.log(customerOrder);
-        // Clear out order container, then
-        document.getElementById('order__list').innerHTML = '';
-        // Re-render the order list
-        document.getElementById('order__list').append(...renderOrder(menuObjects2, customerOrder));
+        reRenderOrderList(menuObjects, customerOrder);
     }
-
 });
 
 document.getElementById('order__list').addEventListener('click', (event) => {
     const decrementedItem = event.target.dataset.less;
     const incrementedItem = event.target.dataset.more;
+    const removedItem = event.target.dataset.remove;
 
-    decrementedItem ? changeMenuItemQuantity(false, menuObjects2[decrementedItem]) :
-        changeMenuItemQuantity(true, menuObjects2[incrementedItem]);
+    if (removedItem) {
+        // Remove item from customerOrder array
+        customerOrder.splice(customerOrder.indexOf(removedItem), 1);
+        // Reset item's quantity in menuObjects back to zero
+        menuObjects[removedItem].reset();
+    } else if (decrementedItem || incrementedItem) {
+        decrementedItem ? changeMenuItemQuantity(false, menuObjects[decrementedItem]) :
+        changeMenuItemQuantity(true, menuObjects[incrementedItem]);
+    }
 
+    reRenderOrderList(menuObjects, customerOrder);
+});
+
+function reRenderOrderList(menuObjs, orderArr) {
     // Re-render the order list
     document.getElementById('order__list').innerHTML = '';
-    document.getElementById('order__list').append(...renderOrder(menuObjects2, customerOrder));
-});
+    document.getElementById('order__list').append(...renderOrder(menuObjs, orderArr));
+}
