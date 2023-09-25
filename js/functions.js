@@ -73,7 +73,7 @@ function changeMenuItemQuantity(isQtyIncrease, menuObject) {
 
 function calculateOrderTotal(menuObjects) {
     return Object.values(menuObjects).reduce((total, currentMenuItem) => {
-        return total + (currentMenuItem.qty * currentMenuItem.data.price)
+        return total + (currentMenuItem.qty * currentMenuItem.data.price);
     }, 0);
 }
 
