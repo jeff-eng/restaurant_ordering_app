@@ -1,5 +1,5 @@
 import { menuObjects } from './data.js';
-import { renderMenu, renderOrder, changeMenuItemQuantity } from './functions.js';
+import { renderMenu, renderOrder, changeMenuItemQuantity, calculateOrderTotal } from './functions.js';
 
 let customerOrder = [];
 
@@ -39,10 +39,15 @@ document.getElementById('order__list').addEventListener('click', (event) => {
     }
 
     reRenderOrderList(menuObjects, customerOrder);
+
 });
 
 function reRenderOrderList(menuObjs, orderArr) {
     // Re-render the order list
     document.getElementById('order__list').innerHTML = '';
     document.getElementById('order__list').append(...renderOrder(menuObjs, orderArr));
+    // Update total
+    document.getElementById('order__total-amount').textContent = calculateOrderTotal(menuObjs);
 }
+
+console.log(document.getElementById('order__total-price').textContent);

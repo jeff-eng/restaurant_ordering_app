@@ -28,7 +28,6 @@ function renderMenu(menuObjects) {
 function createMenuItem(menuItemObjKey, menuItemObjVal) {
     const name = menuItemObjKey;
     const { id, ingredients, price, emoji } = menuItemObjVal.data;
-    console.log(id, ingredients, price, emoji);
     const article = createBasicElement(htmlElementTable.article, `menu-item-${id}`, 'menu-item');
 
     article.innerHTML = 
@@ -72,4 +71,10 @@ function changeMenuItemQuantity(isQtyIncrease, menuObject) {
     return menuObject.qty;
 }
 
-export { renderMenu, renderOrder, changeMenuItemQuantity };
+function calculateOrderTotal(menuObjects) {
+    return Object.values(menuObjects).reduce((total, currentMenuItem) => {
+        return total + (currentMenuItem.qty * currentMenuItem.data.price)
+    }, 0);
+}
+
+export { renderMenu, renderOrder, changeMenuItemQuantity, calculateOrderTotal };
