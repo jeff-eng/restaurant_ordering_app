@@ -1,51 +1,4 @@
-const menuArray = [
-    {
-        id: 0,
-        name: "pizza",
-        ingredients: ["pepperoni", "mushroom", "mozzarella"],
-        price: 14,
-        emoji: "🍕"
-    },
-    {
-        id: 1,
-        name: "hamburger",
-        ingredients: ["beef", "cheese", "lettuce"],
-        price: 12,
-        emoji: "🍔"
-    },
-    {
-        id: 2,
-        name: "beer",
-        ingredients: ["grain, hops, yeast, water"],
-        price: 12,
-        emoji: "🍺"
-    }
-];
-
-// const menuObjects = {
-//     pizza: {
-//         id: 0,
-//         ingredients: ["pepperoni", "mushroom", "mozzarella"],
-//         price: 14,
-//         emoji: "🍕"
-//     },
-
-//     hamburger: {
-//         id: 1,
-//         ingredients: ["beef", "cheese", "lettuce"],
-//         price: 12,
-//         emoji: "🍔"
-//     },
-
-//     beer: {
-//         id: 2,
-//         ingredients: ["grain, hops, yeast, water"],
-//         price: 12,
-//         emoji: "🍺"
-//     }
-// };
-
-const menuObjects2 = {
+const menuObjects = {
     pizza: {
         qty: 0,
         data: {
@@ -59,7 +12,10 @@ const menuObjects2 = {
         },
         decrement: function() {
             this.qty--;
-            this.qty = Math.max(0, this.qty);
+            this.qty = Math.max(1, this.qty);
+        },
+        reset: function() {
+            this.qty = 0;
         }
     },
 
@@ -76,7 +32,10 @@ const menuObjects2 = {
         },
         decrement: function() {
             this.qty--;
-            this.qty = Math.max(0, this.qty);
+            this.qty = Math.max(1, this.qty);
+        },
+        reset: function() {
+            this.qty = 0;
         }
     },
 
@@ -93,9 +52,12 @@ const menuObjects2 = {
         },
         decrement: function() {
             this.qty--;
-            this.qty = Math.max(0, this.qty);
+            this.qty = Math.max(1, this.qty);
+        },
+        reset: function() {
+            this.qty = 0;
         }
     }
 }
 
-export { menuArray, menuObjects2 };
+export { menuObjects };
