@@ -1,5 +1,6 @@
 const htmlElementTable = {
     article: 'article',
+    section: 'section',
     div: 'div',
     span: 'span',
     h3: 'h3',
@@ -77,4 +78,4 @@ function calculateOrderTotal(menuObjects) {
     }, 0);
 }
 
-export { renderMenu, renderOrder, changeMenuItemQuantity, calculateOrderTotal, createBasicElement };
+export { renderMenu, renderOrder, changeMenuItemQuantity, calculateOrderTotal, createBasicElement, htmlElementTable };
