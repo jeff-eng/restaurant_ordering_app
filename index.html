@@ -16,19 +16,13 @@
             <section class="menu-container" id="menu-container">
                 <!-- menu items rendered dynamically -->
             </section>
-            <section class="order-container">
+            <section class="order-container hide" id="order-container">
                 <header class="order__header">
                     <h2 class="order__heading">Your order</h2>
                 </header>
                 <div class="order__details-wrapper">
                     <ul class="order__list" id="order__list">
-                        <!-- <li class="order__list-item">
-                            <div class="order__item-wrapper">
-                                <h3 class="order__item-name">Pizza</h3>
-                                <button class="order__button--remove">remove</button>
-                            </div>
-                            <p class="order__item-price">$14</p>
-                        </li> -->
+                        <!-- order list items rendered dynamically -->
                     </ul>
                     <aside class="promocode-wrapper">
                         <h2 class="promocode__heading">Promo Code</h2>
@@ -46,21 +40,41 @@
                             $<span class="order__total-amount" id="order__total-amount">0</span>
                         </p>
                     </footer>
-                    <button class="order__button--complete">Complete order</button>
+                    <button type="button" class="order__button--complete" id="order__button--complete">Complete order</button>
                 </div>
             </section>
-            <div class="modal" id="modal">
+            <div class="modal hide" id="modal">
                 <div class="modal__button-wrapper">
-                    <button class="modal__button--close" id="modal__button--close">
-                        <i class="fa-regular fa-circle-xmark"></i>
-                    </button>
+                    <i 
+                        class="modal__button--dismiss fa-solid fa-circle-arrow-left" 
+                        id="modal__button--dismiss" 
+                        aria-label="dismiss payment modal button">
+                    </i>
                 </div>
                 <div class="modal__inner-wrapper" id="modal__inner-wrapper">
                     <h2 class="modal__heading">Enter card details</h2>
                     <form class="modal__payment-form" id="modal__payment-form">
-                        <input type="text" class="modal__payment-form--input" name="fullName" placeholder="Enter your name" required>
-                        <input type="text" class="modal__payment-form--input" name="creditCardNumber" placeholder="Enter card number" required>
-                        <input type="text" class="modal__payment-form--input" name="CVVNumber" placeholder="Enter CVV" required>
+                        <input 
+                            type="text" 
+                            class="modal__payment-form--input" 
+                            name="fullName" 
+                            placeholder="Enter your name" 
+                            required
+                        >
+                        <input 
+                            type="text" 
+                            class="modal__payment-form--input" 
+                            name="creditCardNumber" 
+                            placeholder="Enter card number" 
+                            required
+                        >
+                        <input 
+                            type="text" 
+                            class="modal__payment-form--input" 
+                            name="CVVNumber" 
+                            placeholder="Enter CVV" 
+                            required
+                        >
                         <div class="modal__button-inner-wrapper">
                             <button type="submit" class="modal__button--pay">Pay</button>
                         </div>
