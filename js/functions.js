@@ -56,9 +56,9 @@ function createOrderListItem(menuObjects, menuItemString) {
         <div class="order__item-wrapper">
             <h3 class="order__item-name">${menuItemString}</h3>
             <button class="order__button--remove" data-remove="${menuItemString}">remove</button>
-            <i class="fa-solid fa-chevron-left" data-less="${menuItemString}"></i>
+            <i class="order__button--qty-chg fa-solid fa-chevron-left" data-less="${menuItemString}"></i>
             <span>${qty}</span>
-            <i class="fa-solid fa-chevron-right" data-more="${menuItemString}"></i>
+            <i class="order__button--qty-chg fa-solid fa-chevron-right" data-more="${menuItemString}"></i>
         </div>
         <p class="order__item-price">$${data.price * qty}</p>`;
 
