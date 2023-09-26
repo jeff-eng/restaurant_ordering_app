@@ -1,10 +1,9 @@
 import { menuObjects } from './data.js';
 import { 
     renderMenu, 
-    renderOrder, 
     changeMenuItemQuantity, 
-    calculateOrderTotal,
     createBasicElement,
+    reRenderOrderList,
     htmlElementTable } from './functions.js';
 
 let customerOrder = [];
@@ -65,9 +64,7 @@ paymentForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const paymentFormData = new FormData(paymentForm);
-    console.log(paymentFormData);
     const customerName = paymentFormData.get('fullName');
-    console.log(customerName);
 
     paymentForm.reset();
 
@@ -77,14 +74,30 @@ paymentForm.addEventListener('submit', (event) => {
     // Dynamically generate Order Confirmed message
     const orderConfirmSection = createBasicElement(htmlElementTable.section, 
                                                    'order-confirm-container', 
-                                                   'order-confirm-container');
+                                                   'order-confirm-container'
+    );
     const orderConfirmMessage = createBasicElement(htmlElementTable.p, 
                                                     'order-confirm__message', 
-                                                    'order-confirm__message');
-                                                    
-    orderConfirmMessage.textContent = `Thanks, ${customerName}! Your order is on its way!`;
+                                                    'order-confirm__message'
+    );
+
     orderConfirmSection.append(orderConfirmMessage);
+    orderConfirmMessage.textContent = `Thanks, ${customerName}! Your order is on its way!`;
     document.getElementById('main-container').appendChild(orderConfirmSection);
+    
+    setTimeout(() => {
+        document.getElementById('main-container').removeChild(orderConfirmSection);
+
+    }, 8000);
+    
+    // Reset data for new order submission
+    Object.values(menuObjects).forEach((obj) => {
+        obj.reset();
+    });
+    customerOrder = [];
+
+    // Reset the order list
+    document.getElementById('order__list').innerHTML = '';
 });
 
 modal.addEventListener('click', (event) => {
@@ -93,18 +106,3 @@ modal.addEventListener('click', (event) => {
         modal.classList.add('hide');
     }
 });
-
-function reRenderOrderList(menuObjs, orderArr) {
-    // Re-render the order list
-    document.getElementById('order__list').innerHTML = '';
-    document.getElementById('order__list').append(...renderOrder(menuObjs, orderArr));
-    // Update total
-    const calculatedTotal = calculateOrderTotal(menuObjs);
-    if (calculateOrderTotal) {
-        document.getElementById('order__total-amount').textContent = calculatedTotal;
-        document.getElementById('order-container').classList.remove('hide');
-    } else {
-        document.getElementById('order__total-amount').textContent = calculateOrderTotal;
-        document.getElementById('order-container').classList.add('hide');
-    }
-}
