@@ -4,6 +4,7 @@ import { renderMenu, renderOrder, changeMenuItemQuantity, calculateOrderTotal } 
 let customerOrder = [];
 
 const paymentForm = document.getElementById('modal__payment-form');
+const modal = document.getElementById('modal');
 
 // Dynamically generate menu
 document.getElementById('menu-container').append(...renderMenu(menuObjects));
@@ -44,6 +45,16 @@ document.getElementById('order__list').addEventListener('click', (event) => {
 
 });
 
+document.getElementById('order-container').addEventListener('click', (event) => {
+    const completeOrderBtn = event.target;
+    console.log(completeOrderBtn);
+
+    // Display modal
+    if (completeOrderBtn.id === 'order__button--complete') {
+        setTimeout(() => modal.classList.toggle('hide'), 1500);
+    }
+});
+
 paymentForm.addEventListener('submit', (event) => {
     event.preventDefault();
     console.log('Form submitted');
@@ -54,6 +65,15 @@ paymentForm.addEventListener('submit', (event) => {
     console.log(customerName);
 
     paymentForm.reset();
+
+    modal.classList.toggle('hide');
+});
+
+modal.addEventListener('click', (event) => {
+    if (event.target.id === 'modal__button--dismiss') {
+        paymentForm.reset();
+        modal.classList.add('hide');
+    }
 });
 
 function reRenderOrderList(menuObjs, orderArr) {
@@ -61,5 +81,12 @@ function reRenderOrderList(menuObjs, orderArr) {
     document.getElementById('order__list').innerHTML = '';
     document.getElementById('order__list').append(...renderOrder(menuObjs, orderArr));
     // Update total
-    document.getElementById('order__total-amount').textContent = calculateOrderTotal(menuObjs);
+    const calculatedTotal = calculateOrderTotal(menuObjs);
+    if (calculateOrderTotal) {
+        document.getElementById('order__total-amount').textContent = calculatedTotal;
+        document.getElementById('order-container').classList.remove('hide');
+    } else {
+        document.getElementById('order__total-amount').textContent = calculateOrderTotal;
+        document.getElementById('order-container').classList.add('hide');
+    }
 }
