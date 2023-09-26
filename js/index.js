@@ -1,5 +1,11 @@
 import { menuObjects } from './data.js';
-import { renderMenu, renderOrder, changeMenuItemQuantity, calculateOrderTotal } from './functions.js';
+import { 
+    renderMenu, 
+    renderOrder, 
+    changeMenuItemQuantity, 
+    calculateOrderTotal,
+    createBasicElement,
+    htmlElementTable } from './functions.js';
 
 let customerOrder = [];
 
@@ -57,7 +63,6 @@ document.getElementById('order-container').addEventListener('click', (event) => 
 
 paymentForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    console.log('Form submitted');
 
     const paymentFormData = new FormData(paymentForm);
     console.log(paymentFormData);
@@ -67,6 +72,19 @@ paymentForm.addEventListener('submit', (event) => {
     paymentForm.reset();
 
     modal.classList.toggle('hide');
+    document.getElementById('order-container').classList.add('hide');
+
+    // Dynamically generate Order Confirmed message
+    const orderConfirmSection = createBasicElement(htmlElementTable.section, 
+                                                   'order-confirm-container', 
+                                                   'order-confirm-container');
+    const orderConfirmMessage = createBasicElement(htmlElementTable.p, 
+                                                    'order-confirm__message', 
+                                                    'order-confirm__message');
+                                                    
+    orderConfirmMessage.textContent = `Thanks, ${customerName}! Your order is on its way!`;
+    orderConfirmSection.append(orderConfirmMessage);
+    document.getElementById('main-container').appendChild(orderConfirmSection);
 });
 
 modal.addEventListener('click', (event) => {
