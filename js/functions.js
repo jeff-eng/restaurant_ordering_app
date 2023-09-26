@@ -77,4 +77,4 @@ function calculateOrderTotal(menuObjects) {
     }, 0);
 }
 
-export { renderMenu, renderOrder, changeMenuItemQuantity, calculateOrderTotal };
+export { renderMenu, renderOrder, changeMenuItemQuantity, calculateOrderTotal, createBasicElement };
