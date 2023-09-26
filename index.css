@@ -1,0 +1,8 @@
+button, .modal__button--dismiss, .order__button--qty-chg {
+    cursor: pointer;
+}
+
+/* Utility classes */
+.hide {
+    display: none;
+}
