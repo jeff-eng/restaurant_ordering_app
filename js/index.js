@@ -3,6 +3,8 @@ import { renderMenu, renderOrder, changeMenuItemQuantity, calculateOrderTotal } 
 
 let customerOrder = [];
 
+const paymentForm = document.getElementById('modal__payment-form');
+
 // Dynamically generate menu
 document.getElementById('menu-container').append(...renderMenu(menuObjects));
 
@@ -42,6 +44,18 @@ document.getElementById('order__list').addEventListener('click', (event) => {
 
 });
 
+paymentForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log('Form submitted');
+
+    const paymentFormData = new FormData(paymentForm);
+    console.log(paymentFormData);
+    const customerName = paymentFormData.get('fullName');
+    console.log(customerName);
+
+    paymentForm.reset();
+});
+
 function reRenderOrderList(menuObjs, orderArr) {
     // Re-render the order list
     document.getElementById('order__list').innerHTML = '';
@@ -49,5 +63,3 @@ function reRenderOrderList(menuObjs, orderArr) {
     // Update total
     document.getElementById('order__total-amount').textContent = calculateOrderTotal(menuObjs);
 }
-
-console.log(document.getElementById('order__total-price').textContent);
