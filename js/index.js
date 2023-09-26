@@ -47,7 +47,6 @@ document.getElementById('order__list').addEventListener('click', (event) => {
     }
 
     reRenderOrderList(menuObjects, customerOrder);
-
 });
 
 document.getElementById('order-container').addEventListener('click', (event) => {
@@ -81,13 +80,14 @@ paymentForm.addEventListener('submit', (event) => {
                                                     'order-confirm__message'
     );
 
+    // Show the message
     orderConfirmSection.append(orderConfirmMessage);
     orderConfirmMessage.textContent = `Thanks, ${customerName}! Your order is on its way!`;
     document.getElementById('main-container').appendChild(orderConfirmSection);
     
+    // Remove the message after 8 seconds
     setTimeout(() => {
         document.getElementById('main-container').removeChild(orderConfirmSection);
-
     }, 8000);
     
     // Reset data for new order submission
