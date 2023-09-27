@@ -78,4 +78,31 @@ function calculateOrderTotal(menuObjects) {
     }, 0);
 }
 
-export { renderMenu, renderOrder, changeMenuItemQuantity, calculateOrderTotal, createBasicElement, htmlElementTable };
+function reRenderOrderList(menuObjs, orderArr) {
+    const orderTotalSpan = document.getElementById('order__total-amount');
+    const orderList = document.getElementById('order__list');
+    const orderContainer = document.getElementById('order-container');
+    
+    // Re-render the order list
+    orderList.innerHTML = '';
+    orderList.append(...renderOrder(menuObjs, orderArr));
+    
+    // Update total
+    const calculatedTotal = calculateOrderTotal(menuObjs);
+    
+    if (calculatedTotal) {
+        orderTotalSpan.textContent = calculatedTotal;
+        orderContainer.classList.remove('hide');
+    } else {
+        orderTotalSpan.textContent = calculatedTotal;
+        orderContainer.classList.add('hide');
+    }
+
+}
+
+export { renderMenu, 
+        renderOrder, 
+        changeMenuItemQuantity, 
+        createBasicElement,
+        reRenderOrderList, 
+        htmlElementTable }; 
