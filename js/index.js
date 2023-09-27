@@ -1,7 +1,15 @@
 import { menuObjects } from './data.js';
-import { renderMenu, renderOrder, changeMenuItemQuantity, calculateOrderTotal } from './functions.js';
+import { 
+    renderMenu, 
+    changeMenuItemQuantity, 
+    createBasicElement,
+    reRenderOrderList,
+    htmlElementTable } from './functions.js';
 
 let customerOrder = [];
+
+const paymentForm = document.getElementById('modal__payment-form');
+const modal = document.getElementById('modal');
 
 // Dynamically generate menu
 document.getElementById('menu-container').append(...renderMenu(menuObjects));
@@ -39,15 +47,62 @@ document.getElementById('order__list').addEventListener('click', (event) => {
     }
 
     reRenderOrderList(menuObjects, customerOrder);
-
 });
 
-function reRenderOrderList(menuObjs, orderArr) {
-    // Re-render the order list
-    document.getElementById('order__list').innerHTML = '';
-    document.getElementById('order__list').append(...renderOrder(menuObjs, orderArr));
-    // Update total
-    document.getElementById('order__total-amount').textContent = calculateOrderTotal(menuObjs);
-}
+document.getElementById('order-container').addEventListener('click', (event) => {
+    const completeOrderBtn = event.target;
+    console.log(completeOrderBtn);
 
-console.log(document.getElementById('order__total-price').textContent);
+    // Display modal
+    if (completeOrderBtn.id === 'order__button--complete') {
+        setTimeout(() => modal.classList.toggle('hide'), 1500);
+    }
+});
+
+paymentForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const paymentFormData = new FormData(paymentForm);
+    const customerName = paymentFormData.get('fullName');
+
+    paymentForm.reset();
+
+    modal.classList.toggle('hide');
+    document.getElementById('order-container').classList.add('hide');
+
+    // Dynamically generate Order Confirmed message
+    const orderConfirmSection = createBasicElement(htmlElementTable.section, 
+                                                   'order-confirm-container', 
+                                                   'order-confirm-container'
+    );
+    const orderConfirmMessage = createBasicElement(htmlElementTable.p, 
+                                                    'order-confirm__message', 
+                                                    'order-confirm__message'
+    );
+
+    // Show the message
+    orderConfirmSection.append(orderConfirmMessage);
+    orderConfirmMessage.textContent = `Thanks, ${customerName}! Your order is on its way!`;
+    document.getElementById('main-container').appendChild(orderConfirmSection);
+    
+    // Remove the message after 8 seconds
+    setTimeout(() => {
+        document.getElementById('main-container').removeChild(orderConfirmSection);
+    }, 8000);
+    
+    // Reset data for new order submission
+    Object.values(menuObjects).forEach((obj) => {
+        obj.reset();
+    });
+    customerOrder = [];
+
+    // Reset the order list
+    document.getElementById('order__list').innerHTML = '';
+});
+
+modal.addEventListener('click', (event) => {
+    if (event.target.id === 'modal__button--dismiss') {
+        paymentForm.reset();
+        modal.classList.add('hide');
+    }
+});

@@ -1,5 +1,6 @@
 const htmlElementTable = {
     article: 'article',
+    section: 'section',
     div: 'div',
     span: 'span',
     h3: 'h3',
@@ -56,9 +57,9 @@ function createOrderListItem(menuObjects, menuItemString) {
         <div class="order__item-wrapper">
             <h3 class="order__item-name">${menuItemString}</h3>
             <button class="order__button--remove" data-remove="${menuItemString}">remove</button>
-            <i class="fa-solid fa-chevron-left" data-less="${menuItemString}"></i>
+            <i class="order__button--qty-chg fa-solid fa-chevron-left" data-less="${menuItemString}"></i>
             <span>${qty}</span>
-            <i class="fa-solid fa-chevron-right" data-more="${menuItemString}"></i>
+            <i class="order__button--qty-chg fa-solid fa-chevron-right" data-more="${menuItemString}"></i>
         </div>
         <p class="order__item-price">$${data.price * qty}</p>`;
 
@@ -77,4 +78,31 @@ function calculateOrderTotal(menuObjects) {
     }, 0);
 }
 
-export { renderMenu, renderOrder, changeMenuItemQuantity, calculateOrderTotal };
+function reRenderOrderList(menuObjs, orderArr) {
+    const orderTotalSpan = document.getElementById('order__total-amount');
+    const orderList = document.getElementById('order__list');
+    const orderContainer = document.getElementById('order-container');
+    
+    // Re-render the order list
+    orderList.innerHTML = '';
+    orderList.append(...renderOrder(menuObjs, orderArr));
+    
+    // Update total
+    const calculatedTotal = calculateOrderTotal(menuObjs);
+    
+    if (calculatedTotal) {
+        orderTotalSpan.textContent = calculatedTotal;
+        orderContainer.classList.remove('hide');
+    } else {
+        orderTotalSpan.textContent = calculatedTotal;
+        orderContainer.classList.add('hide');
+    }
+
+}
+
+export { renderMenu, 
+        renderOrder, 
+        changeMenuItemQuantity, 
+        createBasicElement,
+        reRenderOrderList, 
+        htmlElementTable }; 
