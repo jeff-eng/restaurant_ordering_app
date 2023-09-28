@@ -60,4 +60,30 @@ const menuObjects = {
     }
 }
 
-export { menuObjects };
+const promotions = {
+    mealDeal: {
+        discountRate: 0.10,
+        requiredItems: ['pizza', 'hamburger', 'beer'],
+        qualifiesForPromotion: function (orderArray) {
+            const orderSet = new Set(orderArray);
+            const requiredSet = new Set(this.requiredItems);
+
+            if (orderSet.size !== requiredSet.size) {
+                return false;
+            }
+
+            for (const item of orderSet) {
+                if (!requiredSet.has(item)) {
+                    return false;
+                }
+            }
+
+            return true;
+        },
+        getDiscountString: function() {
+            return `${this.discountRate * 100}%`;
+        }
+    }
+}
+
+export { menuObjects, promotions };
