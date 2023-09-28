@@ -1,3 +1,5 @@
+import { promotions } from './data.js';
+
 const htmlElementTable = {
     article: 'article',
     section: 'section',
@@ -72,14 +74,20 @@ function changeMenuItemQuantity(isQtyIncrease, menuObject) {
     return menuObject.qty;
 }
 
-function calculateOrderTotal(menuObjects) {
-    return Object.values(menuObjects).reduce((total, currentMenuItem) => {
+function calculateOrderTotal(menuObjs, orderArr) {
+    let rawTotal = Object.values(menuObjs).reduce((total, currentMenuItem) => {
         return total + (currentMenuItem.qty * currentMenuItem.data.price);
     }, 0);
+
+    if (promotions.mealDeal.qualifiesForPromotion(orderArr)) {
+        return rawTotal -= rawTotal * promotions.mealDeal.discountRate;
+    }
+
+    return rawTotal;
 }
 
 function reRenderOrderList(menuObjs, orderArr) {
-    const orderTotalSpan = document.getElementById('order__total-amount');
+    const orderTotalSpan = document.getElementById('total__amount');
     const orderList = document.getElementById('order__list');
     const orderContainer = document.getElementById('order-container');
     
@@ -87,17 +95,14 @@ function reRenderOrderList(menuObjs, orderArr) {
     orderList.innerHTML = '';
     orderList.append(...renderOrder(menuObjs, orderArr));
     
-    // Update total
-    const calculatedTotal = calculateOrderTotal(menuObjs);
+    const calculatedTotal = calculateOrderTotal(menuObjs, orderArr);
     
     if (calculatedTotal) {
         orderTotalSpan.textContent = calculatedTotal;
         orderContainer.classList.remove('hide');
     } else {
-        orderTotalSpan.textContent = calculatedTotal;
         orderContainer.classList.add('hide');
     }
-
 }
 
 export { renderMenu, 
