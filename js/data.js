@@ -62,8 +62,12 @@ const menuObjects = {
 
 const promotions = {
     mealDeal: {
+        description: 'meal deal discount',
         discountRate: 0.10,
         requiredItems: ['pizza', 'hamburger', 'beer'],
+        getDiscountString: function() {
+            return this.discountRate * 100 + '%';
+        },
         qualifiesForPromotion: function (orderArray) {
             const orderSet = new Set(orderArray);
             const requiredSet = new Set(this.requiredItems);
@@ -80,9 +84,7 @@ const promotions = {
 
             return true;
         },
-        getDiscountString: function() {
-            return `${this.discountRate * 100}%`;
-        }
+
     }
 }
 
