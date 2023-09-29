@@ -86,19 +86,53 @@ function calculateOrderTotal(menuObjs, orderArr) {
     return rawTotal;
 }
 
+function createDiscountHtml(promoObj, orderTotal) {
+    const formatter = new Intl.NumberFormat('en-US', {
+        style:'currency',
+        currency: 'USD'
+    });
+
+    const preDiscountTotal = orderTotal / (1 - promoObj.discountRate);
+    const discountDollarAmount = (promoObj.discountRate * preDiscountTotal).toFixed(2);
+    const discountDiv = createBasicElement(htmlElementTable.div, 'discount', 'discount');
+
+    discountDiv.innerHTML = `
+        <h2 class="discount__heading">${promoObj.description} (-${promoObj.getDiscountString()})</h2>
+        <p class="discount__amount-block">
+        (<span class="discount__amount-value">${formatter.format(discountDollarAmount)}</span>)
+        </p>`;
+    
+    return discountDiv;
+}
+
 function reRenderOrderList(menuObjs, orderArr) {
+    const formatter = new Intl.NumberFormat('en-US', {
+        style:'currency',
+        currency: 'USD'
+    });
+
     const orderTotalSpan = document.getElementById('total__amount');
     const orderList = document.getElementById('order__list');
     const orderContainer = document.getElementById('order-container');
-    
+    const discountDiv = document.getElementById('discount');
     // Re-render the order list
     orderList.innerHTML = '';
     orderList.append(...renderOrder(menuObjs, orderArr));
     
     const calculatedTotal = calculateOrderTotal(menuObjs, orderArr);
     
+    if (discountDiv) {
+        discountDiv.remove();
+    }
+
+    if (promotions.mealDeal.qualifiesForPromotion(orderArr)) {
+        const discountHtml = createDiscountHtml(promotions.mealDeal, calculatedTotal);
+        
+        document.getElementById('order__footer').prepend(discountHtml);
+    }
+
     if (calculatedTotal) {
-        orderTotalSpan.textContent = calculatedTotal;
+        orderTotalSpan.textContent = formatter.format(calculatedTotal);
         orderContainer.classList.remove('hide');
     } else {
         orderContainer.classList.add('hide');
