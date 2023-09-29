@@ -24,21 +24,19 @@
                     <ul class="order__list" id="order__list">
                         <!-- order list items rendered dynamically -->
                     </ul>
-                    <aside class="promocode-wrapper">
-                        <h2 class="promocode__heading">Promo Code</h2>
-                        <ul class="promocode__list">
-                            <li class="promocode__list-item">HAPPYHOUR</li>
-                        </ul>
-                        <div class="promocode-input-wrapper">
-                            <input type="text" class="promocode__input" placeholder="Promo Code">
-                            <button type="button" class="promocode__button--apply">Apply</button>
+                    <footer class="order__footer" id="order__footer">
+                        <!-- <div class="discount" id="discount">
+                            <h2 class="discount__heading">meal deal discount (-10%)</h2>
+                            <p class="discount__amount-block">
+                                ($<span class="discount__amount-value">2.40</span>)
+                            </p>
+                        </div> -->
+                        <div class="total">
+                            <h2 class="total__heading">Total price:</h2>
+                            <p class="total__price-block" id="total__price-block">
+                                <span class="total__amount" id="total__amount">0</span>
+                            </p>
                         </div>
-                    </aside>
-                    <footer class="order__footer">
-                        <h2 class="order__total-heading">Total price:</h2>
-                        <p class="order__total-price" id="order__total-price">
-                            $<span class="order__total-amount" id="order__total-amount">0</span>
-                        </p>
                     </footer>
                     <button type="button" class="order__button--complete" id="order__button--complete">Complete order</button>
                 </div>
@@ -83,6 +81,7 @@
                 </div>
             </div>
         </main>
+        <script src="./js/functions.js" type="module"></script>
         <script src="./js/index.js" type="module"></script>
     </body>
 </html>
