@@ -1,5 +1,107 @@
+/* CSS reset */
+*, *::before, **::after {
+box-sizing: inherit;
+}
+
+@font-face {
+    font-family: Smythe;
+    src: url('smythe.regular.ttf');
+}
+
+html, body, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+  font-family: Smythe, cursive;
+  color: #000;
+}
+
 button, .modal__button--dismiss, .order__button--qty-chg {
     cursor: pointer;
+}
+
+.header {
+    background-image: url(assets/restaurant-header-img.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: lightgray;
+    /* border: 2px solid red; */
+    /* padding-left: 7.6%; */    
+}
+
+.header__heading {
+    font-size: 39px;
+    color: #FFF;
+}
+
+.header__subheading {
+    font-size: 22.422px;
+    color: #FFF;
+}
+
+.menu-container {
+    /* border: 2px solid red; */
+    margin-left: 46px;
+    margin-right: 46px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+}
+
+.menu-item {
+    border: 1px solid blue;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #D2D2D2;
+    padding-bottom: 51px;
+    gap: 25px;
+}
+
+.menu-item__content-wrapper {
+    /* border: 3px dotted purple; */
+    display: flex;
+    gap: 31px;
+}
+
+.menu-item__details-wrapper {
+    /* border: 1px dashed green; */
+    display: flex;
+    flex-direction: column;
+    gap: 8.5px;
+}
+
+.menu-item__graphic {
+    font-size: 78.72px;
+    text-align: center;
+    /* border: 2px solid brown; */
+}
+
+.menu-item__name {
+    text-transform: capitalize;
+    font-size: 28px;
+    /* border: 1px solid orange; */
+}
+
+.menu_item__ingredients {
+    color: #8B8B8B;
+    font-size: 16px;
+}
+
+.menu-item__price {
+    font-size: 20px;
+    
+}
+
+.menu-item__button {
+    height: 50px;
+    width: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    background-color: transparent;
+    border: 1.5px solid #DEDEDE;
+    color: #3C3C3C;
+    border-radius: 50%;
+    margin-top: 8px;
 }
 
 /* Utility classes */
