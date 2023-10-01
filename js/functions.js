@@ -42,7 +42,9 @@ function createMenuItem(menuItemObjKey, menuItemObjVal) {
             <p class="menu_item__price">$${price}</p>
         </div>
     </div>
-    <button class="menu-item__button" id="menu-item__button--plus-${name}" data-add="${name}">+</button>`
+    <div class="menu-item__button-wrapper">
+        <button class="menu-item__button" id="menu-item__button--plus-${name}" data-add="${name}">+</button>
+    </div>`;
     
     return article;
 }
