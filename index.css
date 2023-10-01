@@ -24,8 +24,11 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     background-size: cover;
     background-repeat: no-repeat;
     background-color: lightgray;
-    /* border: 2px solid red; */
-    /* padding-left: 7.6%; */    
+    background-position: center 65%;
+    height: 167px;
+    padding-left: 7.6%;    
+    display: flex;
+    align-items: center;
 }
 
 .header__heading {
@@ -39,17 +42,20 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 }
 
 .menu-container {
-    /* border: 2px solid red; */
-    margin-left: 46px;
-    margin-right: 46px;
-    margin-top: 15px;
+    min-width: 300px;
+    max-width: 600px;
+    margin-top: 67px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 50px;
+    padding-right: 50px;
     display: flex;
     flex-direction: column;
     gap: 45px;
 }
 
 .menu-item {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #D2D2D2;
@@ -102,6 +108,17 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     color: #3C3C3C;
     border-radius: 50%;
     margin-top: 8px;
+}
+
+.menu-item__button:hover {
+    color: #3C3C3C;
+    background-color: #DEDEDE;
+}
+
+.menu-item__button:active {
+    background-color: transparent;
+    border: 1.5px solid #DEDEDE;
+    color: #3C3C3C;
 }
 
 /* Utility classes */
