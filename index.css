@@ -232,8 +232,9 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     margin-top: 53px;
 }
 
-.order__button--complete {
-    background-color: #11af7a;
+.order__button--complete:hover {
+    background-color: #13c589;
+    box-shadow: 0 0 40px #ccc;
 }
 
 .total {
