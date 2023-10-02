@@ -1,3 +1,7 @@
+:root {
+    --button-text-color: #FFF;
+}
+
 /* CSS reset */
 *, *::before, **::after {
 box-sizing: inherit;
@@ -13,6 +17,12 @@ html, body, h1, h2, h3, p {
   padding: 0;
   font-family: Smythe, cursive;
   color: #000;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 button, .modal__button--dismiss, .order__button--qty-chg {
@@ -47,8 +57,8 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     margin-top: 67px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 46px;
+    padding-right: 46px;
     display: flex;
     flex-direction: column;
     gap: 45px;
@@ -113,12 +123,134 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 .menu-item__button:hover {
     color: #3C3C3C;
     background-color: #DEDEDE;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
 
 .menu-item__button:active {
     background-color: transparent;
     border: 1.5px solid #DEDEDE;
     color: #3C3C3C;
+}
+
+.order-container {
+    min-width: 300px;
+    max-width: 600px;
+    padding-left: 46px;
+    padding-right: 46px;
+    margin: 45px auto 53px;
+}
+
+.order__heading {
+    font-size: 28px;
+    text-align: center;
+}
+
+.order__list {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding-bottom: 31px;
+    border-bottom: 2px solid #393333;
+}
+
+.order__list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order__button--qty-chg {
+    text-align: center;
+}
+
+.order__button--qty {
+    min-width: 25px;
+    display: inline-block;
+    text-align: center;
+}
+
+.order__item-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+
+.order__item-name {
+    font-size: 28px;
+    text-transform: capitalize;
+}
+
+.order__item-price {
+    font-size: 20px;
+}
+
+.order__buttons-wrapper {
+    /* border: 1px solid red; */
+    padding: 5px 0 0 0;
+    display: flex;
+    gap: 10px;
+}
+
+.order__button--remove {
+    color: #BBB;
+    border: none;
+    background-color: transparent;
+    font-family: Verdana;
+    font-size: 12px;
+}
+
+.order__button--remove:hover {
+    color: rgb(255, 64, 0);
+    text-decoration: underline;
+}
+
+.discount {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.discount__heading, .discount__amount-block {
+    font-size: 18px;
+}
+
+.order__button--complete {
+    width: 100%;
+    background-color: #16DB99;
+    color: var(--button-text-color);
+    border-radius: 3px;
+    font-family: Verdana;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    border: none;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    align-items: center;
+    margin-top: 53px;
+}
+
+.order__button--complete {
+    background-color: #11af7a;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 14px;
+}
+
+.total__heading, .total__price-block {
+    color: #0E0E0E;
+    font-size: 28px;
+    line-height: 24px;
+    
+}
+
+.total__amount {
+    font-size: 20px;
 }
 
 /* Utility classes */
