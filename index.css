@@ -3,13 +3,8 @@
 }
 
 /* CSS reset */
-*, *::before, **::after {
-box-sizing: inherit;
-}
-
-@font-face {
-    font-family: Smythe;
-    src: url('smythe.regular.ttf');
+*, *:before, *:after {
+    box-sizing: border-box;
 }
 
 html, body, h1, h2, h3, p {
@@ -220,9 +215,9 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     width: 100%;
     background-color: #16DB99;
     color: var(--button-text-color);
+    font-size: 16px;
     border-radius: 3px;
     font-family: Verdana;
-    font-size: 16px;
     font-weight: 700;
     line-height: 24px;
     border: none;
@@ -232,8 +227,9 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     margin-top: 53px;
 }
 
-.order__button--complete:hover {
-    background-color: #13c589;
+.order__button--complete:hover, .modal__button--pay:hover {
+    color: #13c589;
+    background-color: #3C3C3C;
     box-shadow: 0 0 40px #ccc;
 }
 
@@ -252,6 +248,77 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 
 .total__amount {
     font-size: 20px;
+}
+
+/* Modal */
+.modal {
+    position: relative;
+    box-sizing: border-box;
+    position: fixed;
+    font-family: Verdana, sans-serif;
+    right: 0;
+    left: 0;
+    top: 100px;
+    bottom: 0;
+    margin: auto;
+    height: 542.24px;
+    min-width: 320px;
+    max-width: 524px;
+    border-radius: 3.89px;
+    background: #FFF;
+    padding: 0 24px 30px;
+    box-shadow: 0px 0px 100px #666;
+}
+
+.modal__heading  {
+    font-family: Verdana, sans-serif;
+    text-align: center;
+    margin-bottom: 46.07px;
+    line-height: 31.119px;
+    
+}
+
+.modal__inner-wrapper {
+    margin-top: 47px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal__payment-form--input {
+    width: 100%;
+    padding: 17px 14px;
+    font-size: 20px;
+    margin-top: 23.22px;
+    line-height: 31.119px;
+}
+
+.modal__button--pay {
+    width: 100%;
+    background-color: #16DB99;
+    border-radius: 3.89px;
+    border: none;
+    padding-top: 17px;
+    padding-bottom: 14px;
+    color: var(--button-text-color);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 31.119px;
+    margin-top: 46.43px;
+}
+
+.modal__button-wrapper {
+    position: absolute;
+    top: 9px;
+    left: 9px;
+}
+
+.modal__button--dismiss {
+    font-size: 24px;
+}
+
+.modal__button--dismiss:hover {
+    color: #16DB99;
 }
 
 /* Utility classes */
