@@ -22,7 +22,6 @@
             <section class="menu-container" id="menu-container">
                 <!-- menu items rendered dynamically -->
             </section>
-            <!-- Hide this section with hide class -->
             <section class="order-container hide" id="order-container">
                 <header class="order__header">
                     <h2 class="order__heading">Your order</h2>
@@ -32,12 +31,7 @@
                         <!-- order list items rendered dynamically -->
                     </ul>
                     <footer class="order__footer" id="order__footer">
-                        <!-- <div class="discount" id="discount">
-                            <h2 class="discount__heading">meal deal discount (-10%)</h2>
-                            <p class="discount__amount-block">
-                                ($<span class="discount__amount-value">2.40</span>)
-                            </p>
-                        </div> -->
+                        <!-- Discount is rendered dynamically -->
                         <div class="total">
                             <h2 class="total__heading">Total price:</h2>
                             <p class="total__price-block" id="total__price-block">
@@ -53,7 +47,7 @@
                     <i 
                         class="modal__button--dismiss fa-solid fa-circle-arrow-left" 
                         id="modal__button--dismiss" 
-                        aria-label="dismiss payment modal button">
+                        aria-label="edit order">
                     </i>
                 </div>
                 <div class="modal__inner-wrapper" id="modal__inner-wrapper">
@@ -84,7 +78,6 @@
                             <button type="submit" class="modal__button--pay">Pay</button>
                         </div>
                     </form>
-
                 </div>
             </div>
         </main>
