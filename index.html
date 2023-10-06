@@ -42,13 +42,11 @@
                     <button type="button" class="order__button--complete" id="order__button--complete">Complete order</button>
                 </div>
             </section>
-            <div class="modal hide" id="modal">
+            <div class="modal hide" id="modal" aria-modal="true">
                 <div class="modal__button-wrapper">
-                    <i 
-                        class="modal__button--dismiss fa-solid fa-circle-arrow-left" 
-                        id="modal__button--dismiss" 
-                        aria-label="edit order">
-                    </i>
+                    <button class="modal__button--dismiss" id="modal__button--dismiss" data-btn="dismiss" aria-label="return to order">
+                        <i class="fa-solid fa-circle-arrow-left" data-btn="dismiss"></i>
+                    </button>
                 </div>
                 <div class="modal__inner-wrapper" id="modal__inner-wrapper">
                     <h2 class="modal__heading">Enter card details</h2>
@@ -57,7 +55,7 @@
                             type="text" 
                             class="modal__payment-form--input" 
                             name="fullName" 
-                            placeholder="Enter your name" 
+                            placeholder="Enter your name"
                             required
                         >
                         <input 

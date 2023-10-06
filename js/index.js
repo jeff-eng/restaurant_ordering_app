@@ -51,11 +51,10 @@ document.getElementById('order__list').addEventListener('click', (event) => {
 
 document.getElementById('order-container').addEventListener('click', (event) => {
     const completeOrderBtn = event.target;
-    console.log(completeOrderBtn);
 
     // Display modal
     if (completeOrderBtn.id === 'order__button--complete') {
-        setTimeout(() => modal.classList.toggle('hide'), 1500);
+        setTimeout(() => modal.classList.toggle('hide'), 1000);
     }
 });
 
@@ -100,8 +99,9 @@ paymentForm.addEventListener('submit', (event) => {
     document.getElementById('order__list').innerHTML = '';
 });
 
+// Dismiss modal and return to order page
 modal.addEventListener('click', (event) => {
-    if (event.target.id === 'modal__button--dismiss') {
+    if (event.target.dataset.btn === 'dismiss') {
         paymentForm.reset();
         modal.classList.add('hide');
     }
