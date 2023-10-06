@@ -42,7 +42,7 @@
                     <button type="button" class="order__button--complete" id="order__button--complete">Complete order</button>
                 </div>
             </section>
-            <div class="modal hide" id="modal" aria-modal="true">
+            <div class="modal" id="modal" aria-modal="true">
                 <div class="modal__button-wrapper">
                     <button class="modal__button--dismiss" id="modal__button--dismiss" data-btn="dismiss" aria-label="return to order">
                         <i class="fa-solid fa-circle-arrow-left" data-btn="dismiss"></i>
@@ -62,14 +62,20 @@
                             type="text" 
                             class="modal__payment-form--input" 
                             name="creditCardNumber" 
-                            placeholder="Enter card number" 
+                            placeholder="Enter card number (max 16 digits)" 
+                            minlength="15"
+                            maxlength="16"
+                            pattern="[0-9]{15,16}"
                             required
                         >
                         <input 
                             type="text" 
                             class="modal__payment-form--input" 
                             name="CVVNumber" 
-                            placeholder="Enter CVV" 
+                            placeholder="Enter CVV (max 4 digits)" 
+                            minlength="3"
+                            maxlength="4"
+                            pattern="[0-9]{3,4}"
                             required
                         >
                         <div class="modal__button-inner-wrapper">
