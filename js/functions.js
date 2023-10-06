@@ -43,7 +43,7 @@ function createMenuItem(menuItemObjKey, menuItemObjVal) {
         </div>
     </div>
     <div class="menu-item__button-wrapper">
-        <button class="menu-item__button" id="menu-item__button--plus-${name}" data-add="${name}">+</button>
+        <button class="menu-item__button" id="menu-item__button--plus-${name}" data-add="${name}" aria-label="add to order">+</button>
     </div>`;
     
     return article;
@@ -62,9 +62,13 @@ function createOrderListItem(menuObjects, menuItemString) {
             <h3 class="order__item-name">${menuItemString}</h3>
             <div class="order__buttons-wrapper">
                 <button class="order__button--remove" data-remove="${menuItemString}">remove</button>
-                <i class="order__button--qty-chg fa-solid fa-chevron-left" data-less="${menuItemString}"></i>
+                <button class="order__button--qty-chg" data-less="${menuItemString}" aria-label="decrease quantity">
+                    <i class="fa-solid fa-chevron-left" data-less="${menuItemString}"></i>
+                </button>
                 <span class="order__button--qty">${qty}</span>
-                <i class="order__button--qty-chg fa-solid fa-chevron-right" data-more="${menuItemString}"></i>
+                <button class="order__button--qty-chg" data-more="${menuItemString}" aria-label="increase quantity">
+                    <i class="fa-solid fa-chevron-right" data-more="${menuItemString}"></i>
+                </button>
             </div>
         </div>
         <p class="order__item-price">$${data.price * qty}</p>`;
