@@ -135,6 +135,7 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 }
 
 .order__list {
+    margin-top: 62px;
     display: flex;
     flex-direction: column;
     gap: 9px;
@@ -150,6 +151,9 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 
 .order__button--qty-chg {
     text-align: center;
+    border: none;
+    background: none;
+    padding: none;
 }
 
 .order__button--qty {
@@ -175,7 +179,6 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 }
 
 .order__buttons-wrapper {
-    /* border: 1px solid red; */
     padding: 5px 0 0 0;
     display: flex;
     gap: 10px;
@@ -192,17 +195,6 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 .order__button--remove:hover {
     color: rgb(255, 64, 0);
     text-decoration: underline;
-}
-
-.discount {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.discount__heading, .discount__amount-block {
-    font-size: 18px;
 }
 
 .order__button--complete {
@@ -309,23 +301,29 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 
 .modal__button--dismiss {
     font-size: 24px;
+    background: none;
+    border: none;
 }
 
 .modal__button--dismiss:hover {
     color: #16DB99;
 }
 
-.discount {
-    width: 100%;
-    height: 120px;
-    border-radius: 3px;
-    background: #ECFDF5;
+.discount__heading, .discount__amount-block {
+    font-size: 18px;    
+    color: #065F46;
+    line-height: 16.8px;
 }
 
-.discount__heading {
-    color: #065F46;
-    font-size: 32px;
-    line-height: 16.8px;
+.discount {
+    width: 100%;
+    border-radius: 3px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ECFDF5;
+    padding: 5px 0;
 }
 
 .order-confirm-container {
