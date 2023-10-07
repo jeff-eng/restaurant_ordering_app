@@ -8,16 +8,19 @@ import {
 
 let customerOrder = [];
 
+const menuContainer = document.getElementById('menu-container');
+const mainContainer = document.getElementById('main-container');
+const orderContainer = document.getElementById('order-container');
 const paymentForm = document.getElementById('modal__payment-form');
 const modal = document.getElementById('modal');
+const orderList = document.getElementById('order__list');
 
 // Dynamically generate menu
-document.getElementById('menu-container').append(...renderMenu(menuObjects));
+menuContainer.append(...renderMenu(menuObjects));
 
 //Event listeners
-document.getElementById('menu-container').addEventListener('click', (event) => {
-    const clickedTarget = event.target;
-    const addItem = clickedTarget.dataset.add;
+menuContainer.addEventListener('click', (event) => {
+    const addItem = event.target.dataset.add;
 
     if (addItem) {
         // Increment item quantity
@@ -29,18 +32,16 @@ document.getElementById('menu-container').addEventListener('click', (event) => {
 
         reRenderOrderList(menuObjects, customerOrder);
         // Scroll to order section after adding menu item
-        document.getElementById('order-container').scrollIntoView({ 
+        orderContainer.scrollIntoView({ 
             behavior: "smooth", 
             block: "center" }
         );
     }
 });
 
-document.getElementById('order__list').addEventListener('click', (event) => {
-    const decrementedItem = event.target.dataset.less;
-    const incrementedItem = event.target.dataset.more;
-    const removedItem = event.target.dataset.remove;
-
+orderList.addEventListener('click', (event) => {
+    const { decrementedItem, incrementedItem, removedItem } = event.target.dataset;
+    
     if (removedItem) {
         // Remove item from customerOrder array
         customerOrder.splice(customerOrder.indexOf(removedItem), 1);
@@ -54,7 +55,7 @@ document.getElementById('order__list').addEventListener('click', (event) => {
     reRenderOrderList(menuObjects, customerOrder);
 });
 
-document.getElementById('order-container').addEventListener('click', (event) => {
+orderContainer.addEventListener('click', (event) => {
     const completeOrderBtn = event.target;
 
     // Display modal
@@ -72,7 +73,7 @@ paymentForm.addEventListener('submit', (event) => {
     paymentForm.reset();
 
     modal.close();
-    document.getElementById('order-container').classList.add('hide');
+    orderContainer.classList.add('hide');
 
     // Dynamically generate Order Confirmed message
     const orderConfirmSection = createBasicElement(htmlElementTable.section, 
@@ -87,11 +88,11 @@ paymentForm.addEventListener('submit', (event) => {
     // Show the message
     orderConfirmSection.append(orderConfirmMessage);
     orderConfirmMessage.textContent = `Thanks, ${customerName}! Your order is on its way!`;
-    document.getElementById('main-container').appendChild(orderConfirmSection);
+    mainContainer.appendChild(orderConfirmSection);
     
     // Remove the message after 8 seconds
     setTimeout(() => {
-        document.getElementById('main-container').removeChild(orderConfirmSection);
+        mainContainer.removeChild(orderConfirmSection);
         document.querySelector('header').scrollIntoView( { behavior: 'smooth', block: 'start'} );    
     }, 8000);
     
@@ -102,7 +103,7 @@ paymentForm.addEventListener('submit', (event) => {
     customerOrder = [];
 
     // Reset the order list
-    document.getElementById('order__list').innerHTML = '';
+    orderList.innerHTML = '';
 });
 
 // Dismiss modal and return to order page
