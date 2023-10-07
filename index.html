@@ -42,49 +42,49 @@
                     <button type="button" class="order__button--complete" id="order__button--complete">Complete order</button>
                 </div>
             </section>
-            <div class="modal" id="modal" aria-modal="true">
-                <div class="modal__button-wrapper">
-                    <button class="modal__button--dismiss" id="modal__button--dismiss" data-btn="dismiss" aria-label="return to order">
-                        <i class="fa-solid fa-circle-arrow-left" data-btn="dismiss"></i>
-                    </button>
-                </div>
-                <div class="modal__inner-wrapper" id="modal__inner-wrapper">
-                    <h2 class="modal__heading">Enter card details</h2>
-                    <form class="modal__payment-form" id="modal__payment-form">
-                        <input 
-                            type="text" 
-                            class="modal__payment-form--input" 
-                            name="fullName" 
-                            placeholder="Enter your name"
-                            required
-                        >
-                        <input 
-                            type="text" 
-                            class="modal__payment-form--input" 
-                            name="creditCardNumber" 
-                            placeholder="Enter card number (max 16 digits)" 
-                            minlength="15"
-                            maxlength="16"
-                            pattern="[0-9]{15,16}"
-                            required
-                        >
-                        <input 
-                            type="text" 
-                            class="modal__payment-form--input" 
-                            name="CVVNumber" 
-                            placeholder="Enter CVV (max 4 digits)" 
-                            minlength="3"
-                            maxlength="4"
-                            pattern="[0-9]{3,4}"
-                            required
-                        >
-                        <div class="modal__button-inner-wrapper">
-                            <button type="submit" class="modal__button--pay">Pay</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </main>
+        <dialog class="modal" id="modal" aria-modal="true">
+            <div class="modal__button-wrapper">
+                <button class="modal__button--dismiss" id="modal__button--dismiss" data-btn="dismiss" aria-label="return to order">
+                    <i class="fa-solid fa-circle-arrow-left" data-btn="dismiss"></i>
+                </button>
+            </div>
+            <div class="modal__inner-wrapper" id="modal__inner-wrapper">
+                <h2 class="modal__heading">Enter card details</h2>
+                <form class="modal__payment-form" id="modal__payment-form">
+                    <input 
+                        type="text" 
+                        class="modal__payment-form--input" 
+                        name="fullName" 
+                        placeholder="Enter your name"
+                        required
+                    >
+                    <input 
+                        type="text" 
+                        class="modal__payment-form--input" 
+                        name="creditCardNumber" 
+                        placeholder="Enter card number (max 16 digits)" 
+                        minlength="15"
+                        maxlength="16"
+                        pattern="[0-9]{15,16}"
+                        required
+                    >
+                    <input 
+                        type="text" 
+                        class="modal__payment-form--input" 
+                        name="CVVNumber" 
+                        placeholder="Enter CVV (max 4 digits)" 
+                        minlength="3"
+                        maxlength="4"
+                        pattern="[0-9]{3,4}"
+                        required
+                    >
+                    <div class="modal__button-inner-wrapper">
+                        <button type="submit" class="modal__button--pay">Pay</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
         <script src="./js/functions.js" type="module"></script>
         <script src="./js/index.js" type="module"></script>
     </body>
