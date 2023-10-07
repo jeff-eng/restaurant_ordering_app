@@ -61,13 +61,13 @@ function createOrderListItem(menuObjects, menuItemString) {
         <div class="order__item-wrapper">
             <h3 class="order__item-name">${menuItemString}</h3>
             <div class="order__buttons-wrapper">
-                <button class="order__button--remove" data-remove="${menuItemString}">remove</button>
-                <button class="order__button--qty-chg" data-less="${menuItemString}" aria-label="decrease quantity">
-                    <i class="fa-solid fa-chevron-left" data-less="${menuItemString}"></i>
+                <button class="order__button--remove" data-removed-item="${menuItemString}">remove</button>
+                <button class="order__button--qty-chg" data-decremented-item="${menuItemString}" aria-label="decrease quantity">
+                    <i class="fa-solid fa-chevron-left" data-decremented-item="${menuItemString}"></i>
                 </button>
                 <span class="order__button--qty">${qty}</span>
-                <button class="order__button--qty-chg" data-more="${menuItemString}" aria-label="increase quantity">
-                    <i class="fa-solid fa-chevron-right" data-more="${menuItemString}"></i>
+                <button class="order__button--qty-chg" data-incremented-item="${menuItemString}" aria-label="increase quantity">
+                    <i class="fa-solid fa-chevron-right" data-incremented-item="${menuItemString}"></i>
                 </button>
             </div>
         </div>
