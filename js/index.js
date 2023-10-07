@@ -28,6 +28,11 @@ document.getElementById('menu-container').addEventListener('click', (event) => {
         updatedQuantity && !isItemInOrder ? customerOrder.push(addItem) : null;
 
         reRenderOrderList(menuObjects, customerOrder);
+        // Scroll to order section after adding menu item
+        document.getElementById('order-container').scrollIntoView({ 
+            behavior: "smooth", 
+            block: "center" }
+        );
     }
 });
 
@@ -54,7 +59,7 @@ document.getElementById('order-container').addEventListener('click', (event) => 
 
     // Display modal
     if (completeOrderBtn.id === 'order__button--complete') {
-        setTimeout(() => modal.classList.toggle('hide'), 1000);
+        setTimeout(() => modal.showModal(), 500);
     }
 });
 
@@ -66,7 +71,7 @@ paymentForm.addEventListener('submit', (event) => {
 
     paymentForm.reset();
 
-    modal.classList.toggle('hide');
+    modal.close();
     document.getElementById('order-container').classList.add('hide');
 
     // Dynamically generate Order Confirmed message
@@ -87,6 +92,7 @@ paymentForm.addEventListener('submit', (event) => {
     // Remove the message after 8 seconds
     setTimeout(() => {
         document.getElementById('main-container').removeChild(orderConfirmSection);
+        document.querySelector('header').scrollIntoView( { behavior: 'smooth', block: 'start'} );    
     }, 8000);
     
     // Reset data for new order submission
@@ -103,6 +109,6 @@ paymentForm.addEventListener('submit', (event) => {
 modal.addEventListener('click', (event) => {
     if (event.target.dataset.btn === 'dismiss') {
         paymentForm.reset();
-        modal.classList.add('hide');
+        modal.close();
     }
 });
