@@ -1,5 +1,9 @@
 :root {
     --button-text-color: #FFF;
+    --heading-text-color: #FFF;
+    --button-green: #16DB99;
+    --menu-button-color: #DEDEDE;
+    --menu-button-font-color: #3C3C3C;
 }
 
 /* CSS reset */
@@ -21,9 +25,11 @@ ul {
 }
 
 button, .modal__button--dismiss, .order__button--qty-chg {
+    all: unset;
     cursor: pointer;
 }
 
+/* Header styling */
 .header {
     background-image: url(assets/restaurant-header-img.jpeg);
     background-size: cover;
@@ -38,22 +44,20 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 
 .header__heading {
     font-size: 39px;
-    color: #FFF;
+    color: var(--heading-text-color);
 }
 
 .header__subheading {
     font-size: 22.422px;
-    color: #FFF;
+    color: var(--heading-text-color);
 }
 
+/* Menu section styling */
 .menu-container {
     min-width: 300px;
     max-width: 600px;
-    margin-top: 67px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 46px;
-    padding-right: 46px;
+    margin: 67px auto 0;
+    padding: 0 46px;
     display: flex;
     flex-direction: column;
     gap: 45px;
@@ -103,29 +107,30 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     font-family: 'Inter', sans-serif;
     font-size: 32px;
     background-color: transparent;
-    border: 1.5px solid #DEDEDE;
-    color: #3C3C3C;
+    border: 1.5px solid var(--menu-button-color);
+    color: var(--menu-button-font-color);
     border-radius: 50%;
     margin-top: 8px;
+    text-align: center;
 }
 
 .menu-item__button:hover {
-    color: #3C3C3C;
-    background-color: #DEDEDE;
+    color: var(--menu-button-font-color);
+    background-color: var(--menu-button-color);
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
 
 .menu-item__button:active {
     background-color: transparent;
-    border: 1.5px solid #DEDEDE;
-    color: #3C3C3C;
+    border: 1.5px solid var(--menu-button-color);
+    color: var(--menu-button-font-color);
 }
 
+/* Order section styling */
 .order-container {
     min-width: 300px;
     max-width: 600px;
-    padding-left: 46px;
-    padding-right: 46px;
+    padding: 0 46px;
     margin: 45px auto 53px;
 }
 
@@ -149,17 +154,13 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     align-items: center;
 }
 
-.order__button--qty-chg {
+.order__button--qty, .order__button--qty-chg {
     text-align: center;
-    border: none;
-    background: none;
-    padding: none;
 }
 
 .order__button--qty {
     min-width: 25px;
     display: inline-block;
-    text-align: center;
 }
 
 .order__item-wrapper {
@@ -186,8 +187,6 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 
 .order__button--remove {
     color: #BBB;
-    border: none;
-    background-color: transparent;
     font-family: Verdana;
     font-size: 12px;
 }
@@ -199,7 +198,7 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 
 .order__button--complete {
     width: 100%;
-    background-color: #16DB99;
+    background-color: var(--button-green);
     color: var(--button-text-color);
     font-size: 16px;
     border-radius: 3px;
@@ -207,15 +206,14 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     font-weight: 700;
     line-height: 24px;
     border: none;
-    padding-top: 18px;
-    padding-bottom: 18px;
-    align-items: center;
+    padding: 18px 0;
+    text-align: center;
     margin-top: 53px;
 }
 
 .order__button--complete:hover, .modal__button--pay:hover {
     color: #13c589;
-    background-color: #3C3C3C;
+    background-color: var(--menu-button-font-color);
     box-shadow: 0 0 40px #ccc;
 }
 
@@ -228,8 +226,7 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 .total__heading, .total__price-block {
     color: #0E0E0E;
     font-size: 28px;
-    line-height: 24px;
-    
+    line-height: 24px;   
 }
 
 .total__amount {
@@ -254,7 +251,6 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     background: #FFF;
     padding: 0 24px 30px;
     box-shadow: 0px 0px 100px #666;
-
     border: none;
 }
 
@@ -263,7 +259,6 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     text-align: center;
     margin-bottom: 46.07px;
     line-height: 31.119px;
-    
 }
 
 .modal__inner-wrapper {
@@ -283,16 +278,16 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 
 .modal__button--pay {
     width: 100%;
-    background-color: #16DB99;
+    background-color: var(--button-green);
     border-radius: 3.89px;
     border: none;
-    padding-top: 17px;
-    padding-bottom: 14px;
+    padding: 17px 0 14px;
     color: var(--button-text-color);
     font-weight: 700;
     font-size: 20px;
     line-height: 31.119px;
     margin-top: 46.43px;
+    text-align: center;
 }
 
 .modal__button-wrapper {
@@ -308,9 +303,10 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 }
 
 .modal__button--dismiss:hover {
-    color: #16DB99;
+    color: var(--button-green);
 }
 
+/* Discount elements styling */
 .discount__heading, .discount__amount-block {
     font-size: 18px;    
     color: #065F46;
@@ -328,6 +324,7 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     padding: 5px 0;
 }
 
+/* Order confirmation styling */
 .order-confirm-container {
     max-width: 504px;
     margin: 45px auto;
@@ -339,8 +336,7 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     font-size: 32px;
     color: #065F46;
     line-height: 16.8px;
-    padding-top: 52px;
-    padding-bottom: 51px;
+    padding: 52px 0 51px;
 }
 
 /* Utility classes */
