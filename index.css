@@ -43,12 +43,14 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 }
 
 .header__heading {
-    font-size: 39px;
+    /* font-size: 39px; */
+    font-size: 2.438rem;
     color: var(--heading-text-color);
 }
 
 .header__subheading {
-    font-size: 22.422px;
+    /* font-size: 22.422px; */
+    font-size: 1.4rem;
     color: var(--heading-text-color);
 }
 
@@ -83,29 +85,33 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 }
 
 .menu-item__graphic {
-    font-size: 78.72px;
+    /* font-size: 78.72px; */
+    font-size: 4.92rem;
     text-align: center;
 }
 
 .menu-item__name {
     text-transform: capitalize;
-    font-size: 28px;
+    font-size: 1.75rem;
 }
 
 .menu_item__ingredients {
     color: #8B8B8B;
-    font-size: 16px;
+    /* font-size: 16px; */
+    font-size: 1rem;
 }
 
 .menu-item__price {
-    font-size: 20px; 
+    /* font-size: 20px;  */
+    font-size: 1.25rem; 
 }
 
 .menu-item__button {
     height: 50px;
     width: 50px;
     font-family: 'Inter', sans-serif;
-    font-size: 32px;
+    /* font-size: 32px; */
+    font-size: 2rem;
     background-color: transparent;
     border: 1.5px solid var(--menu-button-color);
     color: var(--menu-button-font-color);
@@ -135,7 +141,8 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 }
 
 .order__heading {
-    font-size: 28px;
+    /* font-size: 28px; */
+    font-size: 1.75rem;
     text-align: center;
 }
 
@@ -171,12 +178,13 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 }
 
 .order__item-name {
-    font-size: 28px;
+    /* font-size: 28px; */
+    font-size: 1.75rem;
     text-transform: capitalize;
 }
 
 .order__item-price {
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 .order__buttons-wrapper {
@@ -188,7 +196,8 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 .order__button--remove {
     color: #BBB;
     font-family: Verdana;
-    font-size: 12px;
+    /* font-size: 12px; */
+    font-size: 0.75rem;
 }
 
 .order__button--remove:hover {
@@ -200,7 +209,8 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     width: 100%;
     background-color: var(--button-green);
     color: var(--button-text-color);
-    font-size: 16px;
+    /* font-size: 16px; */
+    font-size: 1rem;
     border-radius: 3px;
     font-family: Verdana;
     font-weight: 700;
@@ -225,12 +235,14 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 
 .total__heading, .total__price-block {
     color: #0E0E0E;
-    font-size: 28px;
+    /* font-size: 28px; */
+    font-size: 1.75rem;
     line-height: 24px;   
 }
 
 .total__amount {
-    font-size: 20px;
+    /* font-size: 20px; */
+    font-size: 1.25rem;
 }
 
 /* Modal */
@@ -271,7 +283,8 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 .modal__payment-form--input {
     width: 100%;
     padding: 17px 14px;
-    font-size: 20px;
+    /* font-size: 20px; */
+    font-size: 1.25rem;
     margin-top: 23.22px;
     line-height: 31.119px;
 }
@@ -284,7 +297,8 @@ button, .modal__button--dismiss, .order__button--qty-chg {
     padding: 17px 0 14px;
     color: var(--button-text-color);
     font-weight: 700;
-    font-size: 20px;
+    /* font-size: 20px; */
+    font-size: 1.25rem;
     line-height: 31.119px;
     margin-top: 46.43px;
     text-align: center;
@@ -297,7 +311,8 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 }
 
 .modal__button--dismiss {
-    font-size: 24px;
+    /* font-size: 24px; */
+    font-size: 1.5rem;
     background: none;
     border: none;
 }
@@ -308,7 +323,8 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 
 /* Discount elements styling */
 .discount__heading, .discount__amount-block {
-    font-size: 18px;    
+    /* font-size: 18px; */
+    font-size: 1.125rem;    
     color: #065F46;
     line-height: 16.8px;
 }
@@ -333,7 +349,8 @@ button, .modal__button--dismiss, .order__button--qty-chg {
 .order-confirm__message {
     text-align: center;
     background: #ECFDF5;
-    font-size: 32px;
+    /* font-size: 32px; */
+    font-size: 2rem;
     color: #065F46;
     line-height: 16.8px;
     padding: 52px 0 51px;
