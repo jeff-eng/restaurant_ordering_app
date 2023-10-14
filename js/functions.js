@@ -38,8 +38,8 @@ function createMenuItem(menuItemObjKey, menuItemObjVal) {
         <span class="menu-item__graphic" role="img" aria-label="${name} emoji">${emoji}</span>
         <div class="menu-item__details-wrapper">
             <h3 class="menu-item__name">${name}</h3>
-            <p class="menu_item__ingredients">${ingredients.join(', ')}</p>
-            <p class="menu_item__price">$${price}</p>
+            <p class="menu-item__ingredients">${ingredients.join(', ')}</p>
+            <p class="menu-item__price">$${price}</p>
         </div>
     </div>
     <div class="menu-item__button-wrapper">
@@ -62,6 +62,7 @@ function createOrderListItem(menuObjects, menuItemString) {
             <h3 class="order__item-name">${menuItemString}</h3>
             <div class="order__buttons-wrapper">
                 <button class="order__button--remove" data-removed-item="${menuItemString}">remove</button>
+            <div class="order__button--qty-wrapper">
                 <button class="order__button--qty-chg" data-decremented-item="${menuItemString}" aria-label="decrease quantity">
                     <i class="fa-solid fa-chevron-left" data-decremented-item="${menuItemString}"></i>
                 </button>
@@ -69,6 +70,7 @@ function createOrderListItem(menuObjects, menuItemString) {
                 <button class="order__button--qty-chg" data-incremented-item="${menuItemString}" aria-label="increase quantity">
                     <i class="fa-solid fa-chevron-right" data-incremented-item="${menuItemString}"></i>
                 </button>
+            </div>
             </div>
         </div>
         <p class="order__item-price">$${data.price * qty}</p>`;
