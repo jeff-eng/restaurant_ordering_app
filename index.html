@@ -1,12 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Diner</title>
-    <link rel="stylesheet" href="index.css">
-</head>
-<body>
-    <script src="js/index.js" type="module"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jimmy's Diner - Order Page</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Smythe&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="header__content-wrapper">
+                <h1 class="header__heading">Jimmy's Diner</h1>
+                <h2 class="header__subheading">The best burgers and pizzas in town.</h2>
+            </div>
+        </header>
+        <main class="main-container" id="main-container">
+            <section class="menu-container" id="menu-container">
+                <!-- menu items rendered dynamically -->
+            </section>
+            <section class="order-container hide" id="order-container">
+                <header class="order__header">
+                    <h2 class="order__heading">Your order</h2>
+                </header>
+                <div class="order__details-wrapper">
+                    <ul class="order__list" id="order__list">
+                        <!-- order list items rendered dynamically -->
+                    </ul>
+                    <footer class="order__footer" id="order__footer">
+                        <!-- Discount is rendered dynamically -->
+                        <div class="total">
+                            <h2 class="total__heading">Total price:</h2>
+                            <p class="total__price-block" id="total__price-block">
+                                <span class="total__amount" id="total__amount">$0</span>
+                            </p>
+                        </div>
+                    </footer>
+                    <button type="button" class="order__button--complete" id="order__button--complete">Complete order</button>
+                </div>
+            </section>
+        </main>
+        <dialog class="modal" id="modal" aria-modal="true">
+            <div class="modal__button-wrapper">
+                <button class="modal__button--dismiss" id="modal__button--dismiss" data-btn="dismiss" aria-label="return to order">
+                    <i class="fa-solid fa-circle-arrow-left" data-btn="dismiss"></i>
+                </button>
+            </div>
+            <div class="modal__inner-wrapper" id="modal__inner-wrapper">
+                <h2 class="modal__heading">Enter card details</h2>
+                <form class="modal__payment-form" id="modal__payment-form">
+                    <input 
+                        type="text" 
+                        class="modal__payment-form--input" 
+                        name="fullName" 
+                        placeholder="Enter your name"
+                        required
+                    >
+                    <input 
+                        type="text" 
+                        class="modal__payment-form--input" 
+                        name="creditCardNumber" 
+                        placeholder="Enter card number (max 16 digits)" 
+                        minlength="15"
+                        maxlength="16"
+                        pattern="[0-9]{15,16}"
+                        required
+                    >
+                    <input 
+                        type="text" 
+                        class="modal__payment-form--input" 
+                        name="CVVNumber" 
+                        placeholder="Enter CVV (max 4 digits)" 
+                        minlength="3"
+                        maxlength="4"
+                        pattern="[0-9]{3,4}"
+                        required
+                    >
+                    <div class="modal__button-inner-wrapper">
+                        <button type="submit" class="modal__button--pay">Pay</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
+        <script src="./js/functions.js" type="module"></script>
+        <script src="./js/index.js" type="module"></script>
+    </body>
 </html>
